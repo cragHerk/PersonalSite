@@ -1,33 +1,34 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import ContactButton from "../Contact/SpringModal";
 
-const tabs = ["Home", "About", "Portfolio", "Contact"];
+const tabs = ["Home", "About", "Portfolio", <ContactButton />];
 
 const ChipTabs = () => {
   const [selected, setSelected] = useState(tabs[0]);
 
   return (
     <div className="px-4 py-10 bg-slate-900 flex items-center  flex-wrap gap-2 w-screen z-[20] fixed top-0">
-      {tabs.map((tab) => (
+      {tabs.map((tab, index) => (
         <Chip
           text={tab}
           selected={selected === tab}
           setSelected={setSelected}
-          key={tab}
+          key={index}
         />
       ))}
     </div>
   );
 };
 type ChipProps = {
-  text: string;
+  text: string | JSX.Element;
   selected: boolean;
-  setSelected: (value: string) => void;
+  setSelected: (value: string | JSX.Element) => void;
 };
 const Chip = ({ text, selected, setSelected }: ChipProps) => {
   return (
     <button
-      onClick={() => setSelected(text)}
+      onClick={() => typeof text === "string" && setSelected(text)}
       className={`${
         selected
           ? "text-white"
