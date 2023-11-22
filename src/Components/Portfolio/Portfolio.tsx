@@ -1,51 +1,41 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-const projects = [
-  {
-    name: "e-bikes-rental",
-    description:
-      "a fullstack project that is designed to handle bicycle reservations at a local bike rental company its functionalities include operations on reservation boards and sending emails",
-    tags: [
-      { name: "React" },
-      { name: "Redux" },
-      { name: "mongodb" },
-      { name: "node.js" },
-    ],
-    image: "/projects/e-bikes.png",
-    source_code_link: "https://github.com/cragHerk/e-bikes-rental",
-  },
-  {
-    name: "e-bikes-rental",
-    description:
-      "a fullstack project that is designed to handle bicycle reservations at a local bike rental company its functionalities include operations on reservation boards and sending emails",
-    tags: [
-      { name: "React" },
-      { name: "Redux" },
-      { name: "mongodb" },
-      { name: "node.js" },
-    ],
-    image: "/projects/e-bikes.png",
-    source_code_link: "https://github.com/cragHerk/e-bikes-rental",
-  },
-  {
-    name: "e-bikes-rental",
-    description:
-      "a fullstack project that is designed to handle bicycle reservations at a local bike rental company its functionalities include operations on reservation boards and sending emails",
-    tags: [
-      { name: "React" },
-      { name: "Redux" },
-      { name: "mongodb" },
-      { name: "node.js" },
-    ],
-    image: "/projects/e-bikes.png",
-    source_code_link: "https://github.com/cragHerk/e-bikes-rental",
-  },
-];
+import { projects } from "../../utils/projects";
+interface ProjectCardProps {
+  name: string;
+  description: string;
+  tags: Array<{ name: string }>;
+  image: string;
+  source_code_link: string;
+}
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  name,
+  description,
+  tags,
+  image,
+  source_code_link,
+}) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
-const ProjectCard = ({ name, description, tags, image, source_code_link }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setIsVisible(true);
+    }
+  }, [inView]);
   return (
-    <div className=" p-3  bg-gradient-to-b from-indigo-900 to-slate-900 rounded flex justify-center items-center flex-col">
+    <motion.div
+      ref={ref}
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
+      className=" p-3  bg-gradient-to-b from-indigo-900 to-slate-900 rounded flex justify-center items-center flex-col"
+    >
       <img className="rounded " src={image} alt="project_image" />
 
       <div className=" w-full text-left">
@@ -59,7 +49,7 @@ const ProjectCard = ({ name, description, tags, image, source_code_link }) => {
           </p>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
