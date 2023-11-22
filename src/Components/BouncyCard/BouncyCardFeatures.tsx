@@ -2,7 +2,10 @@ import { motion } from "framer-motion";
 
 export const BouncyCardsFeatures = () => {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12 text-slate-800">
+    <section
+      id="about"
+      className="mx-auto px-8 py-12 max-w-7xl  text-slate-800"
+    >
       <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8">
         <h2 className="max-w-lg text-4xl text-indigo-500 font-bold md:text-5xl">
           Grow faster with our

@@ -37,7 +37,7 @@ const ScrollerComponent: React.FC = () => {
   return (
     <div
       ref={scrollerRef}
-      className="w-screen flex justify-center mt-24 pb-24 bg-gradient-to-b from-custom-black to-slate-900"
+      className="w-screen flex items-center justify-center pt-24 pb-24 bg-gradient-to-b from-custom-black to-slate-900"
     >
       <div className="scroller" data-direction="right" data-speed="slow">
         <div className="scroller__inner">

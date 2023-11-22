@@ -1,7 +1,12 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const tabs = ["Home", "About", "Portfolio"];
+const tabs = [
+  <Link to="/">Home</Link>,
+  <Link to="/about">About</Link>,
+  <Link to="/portfolio">Portfolio</Link>,
+];
 
 const ChipTabs = () => {
   const [selected, setSelected] = useState<string | JSX.Element>(tabs[0]);
