@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState, useCallback } from "react";
+import ContactButton from "../Contact/ContactButton";
 type SquareData = {
   id: number;
   src: string;
@@ -19,9 +20,8 @@ const ShuffleHero = () => {
           aspiring to further develop my skills in this field and undertake
           exciting new projects. Feel free to reach out to me.
         </p>
-        <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
-          Contact me
-        </button>
+
+        <ContactButton />
       </div>
       <ShuffleGrid />
     </section>

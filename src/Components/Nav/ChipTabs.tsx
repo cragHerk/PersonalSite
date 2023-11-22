@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
-import ContactButton from "../Contact/SpringModal";
 
-const tabs = ["Home", "About", "Portfolio", <ContactButton />];
+const tabs = ["Home", "About", "Portfolio"];
 
 const ChipTabs = () => {
-  const [selected, setSelected] = useState(tabs[0]);
+  const [selected, setSelected] = useState<string | JSX.Element>(tabs[0]);
 
   return (
     <div className="px-4 py-10 bg-slate-900 flex items-center  flex-wrap gap-2 w-screen z-[20] fixed top-0">

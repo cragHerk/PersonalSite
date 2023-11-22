@@ -6,8 +6,11 @@ const ContactButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="">
-      <button onClick={() => setIsOpen(true)} className="   ">
-        Contact
+      <button
+        onClick={() => setIsOpen(true)}
+        className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95"
+      >
+        Contact me
       </button>
       <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
