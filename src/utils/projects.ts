@@ -1,41 +1,41 @@
 export const projects = [
   {
-    name: "e-bikes-rental",
+    name: "E-Bikes-Rental",
     description:
       "a fullstack project that is designed to handle bicycle reservations at a local bike rental company its functionalities include operations on reservation boards and sending emails",
     tags: [
-      { name: "React" },
-      { name: "Redux" },
-      { name: "mongodb" },
-      { name: "node.js" },
+      { name: "React", color: "text-blue-500" },
+      { name: "Redux", color: "text-violet-500" },
+      { name: "mongodb", color: "text-green-500" },
+      { name: "node.js", color: "text-yellow-500" },
     ],
     image: "/projects/e-bikes.png",
     source_code_link: "https://github.com/cragHerk/e-bikes-rental",
   },
   {
-    name: "e-bikes-rental",
+    name: "Wallet",
     description:
-      "a fullstack project that is designed to handle bicycle reservations at a local bike rental company its functionalities include operations on reservation boards and sending emails",
+      "fullstack project responsible for operations on expenses and income, with the function of setting up an account, created in a group using github and trello and figma ",
     tags: [
-      { name: "React" },
-      { name: "Redux" },
-      { name: "mongodb" },
-      { name: "node.js" },
+      { name: "React", color: "text-blue-500" },
+      { name: "Redux", color: "text-violet-500" },
+      { name: "mongodb", color: "text-green-500" },
+      { name: "node.js", color: "text-yellow-500" },
     ],
-    image: "/projects/e-bikes.png",
-    source_code_link: "https://github.com/cragHerk/e-bikes-rental",
+    image: "/projects/wallet.png",
+    source_code_link: "https://github.com/cragHerk/WalletApp-frontend",
   },
   {
-    name: "e-bikes-rental",
+    name: "lorem ipsum",
     description:
-      "a fullstack project that is designed to handle bicycle reservations at a local bike rental company its functionalities include operations on reservation boards and sending emails",
+      "in progress in progressin progressin progressin progressin progressin progressin progressin progressin progressin progressin progressin progressin progress",
     tags: [
       { name: "React" },
       { name: "Redux" },
       { name: "mongodb" },
       { name: "node.js" },
     ],
-    image: "/projects/e-bikes.png",
+    image: "/projects/inprogress.png",
     source_code_link: "https://github.com/cragHerk/e-bikes-rental",
   },
 ];

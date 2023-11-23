@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { projects } from "../../utils/projects";
+import { FaSquareGithub } from "react-icons/fa6";
 interface ProjectCardProps {
   name: string;
   description: string;
-  tags: Array<{ name: string }>;
+  tags: { name: string; color?: string }[];
   image: string;
   source_code_link: string;
 }
@@ -22,6 +23,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   });
 
   const [isVisible, setIsVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (inView) {
@@ -34,17 +36,38 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
-      className=" p-3  bg-gradient-to-b from-indigo-900 to-slate-900 rounded flex justify-center items-center flex-col"
+      className=" p-3 relative  bg-gradient-to-b from-indigo-900 to-slate-900 rounded flex justify-center items-center flex-col"
+      onMouseEnter={() => setIsModalOpen(true)}
+      onMouseLeave={() => setIsModalOpen(false)}
     >
-      <img className="rounded " src={image} alt="project_image" />
+      <img
+        className="rounded md:max-h-[220px] w-full "
+        src={image}
+        alt="project_image"
+      />
+      {isModalOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 0.5 }}
+          className="rounded absolute bg-indigo-800 opacity-50 w-full h-full "
+        >
+          <a href={source_code_link} className="absolute right-5 top-5">
+            <FaSquareGithub size={24} />
+          </a>
+        </motion.div>
+      )}
 
       <div className=" w-full text-left">
         <h3 className="text-white mt-2 font-bold">{name}</h3>
-        <p className="text-white text-xs">{description}</p>
+        <p className="text-slate-300 text-xs mb-2">{description}</p>
       </div>
       <div className="flex w-full text-left">
         {tags.map((tag) => (
-          <p className="text-white text-xs mx-1" key={`${name}-${tag.name}`}>
+          <p
+            className={`text-white text-xs mx-1 ${tag.color}`}
+            key={`${name}-${tag.name}`}
+          >
             #{tag.name}
           </p>
         ))}
@@ -67,7 +90,10 @@ const Portfolio = () => {
     }
   }, [inView]);
   return (
-    <div className="mx-auto px-8 py-12 my-[150px]  flex max-w-7xl   flex-col">
+    <div
+      id="portfolio"
+      className="mx-auto px-8 py-12 my-[150px]  flex max-w-7xl   flex-col"
+    >
       <div className="md:px-8 mb-8">
         <motion.p
           className="text-slate-400 text-l ml-[2px]"

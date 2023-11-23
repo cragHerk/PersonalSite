@@ -1,16 +1,45 @@
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect, useState } from "react";
 
 export const BouncyCardsFeatures = () => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setIsVisible(true);
+    }
+  }, [inView]);
   return (
     <section
       id="about"
       className="mx-auto px-8 py-12 max-w-7xl  text-slate-800"
     >
       <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8">
-        <h2 className="max-w-lg text-4xl text-indigo-500 font-bold md:text-5xl">
+        <motion.h2
+          ref={ref}
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: isVisible ? 0 : -100, opacity: isVisible ? 1 : 0 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
+          className="max-w-lg text-4xl text-indigo-500 font-bold md:text-5xl"
+        >
           Grow faster with our
-          <span className="text-slate-400"> all in one solution</span>
-        </h2>
+          <motion.span
+            ref={ref}
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: "easeInOut" }}
+            className="text-slate-400"
+          >
+            {" "}
+            all in one solution
+          </motion.span>
+        </motion.h2>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -47,8 +76,24 @@ type BounceCardProps = {
   children: React.ReactNode;
 };
 const BounceCard = ({ className, children }: BounceCardProps) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setIsVisible(true);
+    }
+  }, [inView]);
   return (
     <motion.div
+      ref={ref}
+      initial={{ y: 100, opacity: 0 }}
+      animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
+      transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
       whileHover={{ scale: 0.95, rotate: "-1deg" }}
       className={`group relative min-h-[300px] cursor-pointer overflow-hidden rounded-2xl bg-slate-100 p-8 ${className}`}
     >

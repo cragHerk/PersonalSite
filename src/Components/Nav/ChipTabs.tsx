@@ -1,20 +1,24 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Link } from "react-scroll";
 
-const tabs = ["Home", "About", "Portfolio"];
+const tabs = ["Home", "Portfolio", "About", "Contact"];
 
 const ChipTabs = () => {
-  const [selected, setSelected] = useState<string | JSX.Element>(tabs[0]);
+  const [selected, setSelected] = useState<string>(tabs[0]);
 
   return (
-    <div className="px-4 py-10 bg-slate-900 flex items-center  flex-wrap gap-2 w-screen z-[20] fixed top-0">
+    <div className="px-4 py-8 bg-slate-900 flex items-center  flex-wrap gap-2 w-screen z-[20] fixed top-0">
       {tabs.map((tab, index) => (
-        <Chip
-          text={tab}
-          selected={selected === tab}
-          setSelected={setSelected}
-          key={index}
-        />
+        <div onClick={() => setSelected(tab)} key={index}>
+          <Link to={tab.toLowerCase()} smooth={true}>
+            <Chip
+              text={tab}
+              selected={selected === tab}
+              setSelected={setSelected}
+            />
+          </Link>
+        </div>
       ))}
     </div>
   );
@@ -22,7 +26,7 @@ const ChipTabs = () => {
 type ChipProps = {
   text: string | JSX.Element;
   selected: boolean;
-  setSelected: (value: string | JSX.Element) => void;
+  setSelected: (selected: string) => void;
 };
 const Chip = ({ text, selected, setSelected }: ChipProps) => {
   return (

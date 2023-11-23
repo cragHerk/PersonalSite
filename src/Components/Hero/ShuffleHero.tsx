@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState, useCallback } from "react";
-import ContactButton from "../Contact/ContactButton";
+
 import { useInView } from "react-intersection-observer";
 import useTypewriter from "react-typewriter-hook";
+import EncryptButton from "../EncryptButton/EncryptButton";
 type SquareData = {
   id: number;
   src: string;
@@ -24,7 +25,10 @@ const ShuffleHero = () => {
 
   const typewriter = useTypewriter(message);
   return (
-    <section className="bg-neutral-950 w-full mt-[80px] px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
+    <section
+      id="home"
+      className="bg-neutral-950 w-full mt-[80px] px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto"
+    >
       <div>
         <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
           Let's connect
@@ -49,7 +53,7 @@ const ShuffleHero = () => {
           exciting new projects. Feel free to reach out to me.
         </p>
 
-        <ContactButton />
+        <EncryptButton />
       </div>
       <ShuffleGrid />
     </section>
