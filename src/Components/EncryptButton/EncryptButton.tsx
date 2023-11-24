@@ -1,9 +1,13 @@
 import { useRef, useState } from "react";
-
 import { motion } from "framer-motion";
+import { Link } from "react-scroll";
 
 const Example = () => {
-  return <EncryptButton />;
+  return (
+    <Link to="contact" smooth={true}>
+      <EncryptButton />
+    </Link>
+  );
 };
 
 const TARGET_TEXT = "Contact me";

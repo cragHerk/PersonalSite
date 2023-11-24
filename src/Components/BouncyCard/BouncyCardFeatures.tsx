@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
+import { Link } from "react-scroll";
 
 export const BouncyCardsFeatures = () => {
   const { ref, inView } = useInView({
@@ -40,13 +41,15 @@ export const BouncyCardsFeatures = () => {
             all in one solution
           </motion.span>
         </motion.h2>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="whitespace-nowrap rounded-lg bg-slate-900 px-4 py-2 font-medium text-white shadow-xl transition-colors hover:bg-slate-700"
-        >
-          Contact me
-        </motion.button>
+        <Link to="contact" smooth={true}>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="whitespace-nowrap rounded-lg bg-slate-900 px-4 py-2 font-medium text-white shadow-xl transition-colors hover:bg-slate-700"
+          >
+            Contact me
+          </motion.button>
+        </Link>
       </div>
       <div className="mb-4 grid grid-cols-12 gap-4">
         <BounceCard className="col-span-12 md:col-span-4 bg-gradient-to-br from-purple-600 to-violet-800">

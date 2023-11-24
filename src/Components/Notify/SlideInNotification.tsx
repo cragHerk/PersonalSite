@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FiCheckSquare, FiX } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -9,25 +9,7 @@ const SlideInNotifications = () => {
     setNotifications((pv) => pv.filter((n) => n.id !== id));
   };
 
-  return (
-    <div className="bg-white min-h-[200px] flex items-center justify-center">
-      <button
-        onClick={() => {
-          setNotifications((pv) => [generateRandomNotif(), ...pv]);
-        }}
-        className="text-sm text-white bg-indigo-500 hover:bg-indigo-600 active:scale-95 transition-all font-medium px-3 py-2 rounded"
-      >
-        Add notification
-      </button>
-      <div className="flex flex-col gap-1 w-72 fixed top-2 right-2 z-50 pointer-events-none">
-        <AnimatePresence>
-          {notifications.map((n) => (
-            <Notification removeNotif={removeNotif} {...n} key={n.id} />
-          ))}
-        </AnimatePresence>
-      </div>
-    </div>
-  );
+  return <Notification removeNotif={removeNotif} {...n} key={n.id} />;
 };
 
 const NOTIFICATION_TTL = 5000;
