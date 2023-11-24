@@ -67,7 +67,7 @@ const Contact = () => {
           </div>
           <div className="w-full flex justify-center">
             <button
-              className="mt-7 w-2/3  whitespace-nowrap rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 font-medium text-white shadow-xl transition-colors hover:scale-105 transition-all"
+              className="mt-7 w-2/3  whitespace-nowrap rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 font-medium text-white shadow-xl transition-colors hover:scale-105 transition-transform"
               type="submit"
             >
               Send
