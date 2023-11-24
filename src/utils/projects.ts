@@ -9,7 +9,7 @@ export const projects = [
       { name: "mongodb", color: "text-green-500" },
       { name: "node.js", color: "text-yellow-500" },
     ],
-    image: "/projects/e-bikes.png",
+    image: "/projects/e-bikes.jpg",
     source_code_link: "https://github.com/cragHerk/e-bikes-rental",
   },
   {
@@ -22,7 +22,7 @@ export const projects = [
       { name: "mongodb", color: "text-green-500" },
       { name: "node.js", color: "text-yellow-500" },
     ],
-    image: "/projects/wallet.png",
+    image: "/projects/wallet.jpg",
     source_code_link: "https://github.com/cragHerk/WalletApp-frontend",
   },
   {
@@ -35,7 +35,7 @@ export const projects = [
       { name: "mongodb" },
       { name: "node.js" },
     ],
-    image: "/projects/inprogress.png",
+    image: "/projects/inprogress.jpg",
     source_code_link: "https://github.com/cragHerk/e-bikes-rental",
   },
 ];
