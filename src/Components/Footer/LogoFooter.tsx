@@ -33,17 +33,28 @@ const ScrollerComponent: React.FC = () => {
       }
     });
   };
-
+  const colors = [
+    "rgb(97, 219, 251)",
+    "rgb(240, 219, 79)",
+    "rgb(115, 138, 219)",
+    "rgb(253, 253, 253)",
+    "rgb(0, 149, 217)",
+  ];
   return (
     <div
       ref={scrollerRef}
       className="w-screen flex items-center justify-center pt-24 pb-24 bg-gradient-to-b from-custom-black to-slate-900"
     >
       <div className="scroller" data-direction="right" data-speed="slow">
-        <div className="scroller__inner">
-          {images.map((image, index) => {
+        <div className="scroller__inner ">
+          {images.map((Icon, index) => {
             return (
-              <img src={image} key={index} className="w-[70px] h-[70px] mx-9" />
+              <Icon
+                key={index}
+                size={60}
+                className="mx-8"
+                color={colors[index]}
+              />
             );
           })}
         </div>
