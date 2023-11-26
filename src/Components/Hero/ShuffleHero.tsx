@@ -30,7 +30,7 @@ const ShuffleHero = () => {
   return (
     <section
       id="home"
-      className="bg-neutral-950 w-full mt-[80px] px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto"
+      className="bg-neutral-950 w-full pt-[100px] px-8    grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto"
     >
       <div>
         <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">

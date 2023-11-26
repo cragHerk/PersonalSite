@@ -21,7 +21,7 @@ export const send = createAsyncThunk(
   async ({ name, email, message }: Message, { rejectWithValue }) => {
     try {
       const response = await fetch(
-        "https://portfolio-backend-qbuf.onrender.com/api/send",
+        "https://portfolio-backend-qbuf.onrender.com/sendEmail",
         {
           method: "POST",
           body: JSON.stringify({ name, email, message }),
