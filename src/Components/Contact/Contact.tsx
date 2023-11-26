@@ -1,19 +1,35 @@
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { EarthCanvas } from "../canvas";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSelected } from "../../State/Reducers/nav.slice";
 import { send } from "../../State/Reducers/send.slice";
 import { AppDispatch } from "../../State/Store/store";
+import { RootState } from "../../State/Store/store";
+import Notify from "../Notify/Notify";
+import { PulseLoader } from "react-spinners";
 const Contact = () => {
+  const [showNotify, setShowNotify] = useState(false);
+  const resStatus = useSelector((state: RootState) => state.send.status);
+  const resMessage = useSelector(
+    (state: RootState) => state.send.data?.message
+  );
   const dispatch: AppDispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
+  const [isLoading, setIsLoading] = useState(false);
+  useEffect(() => {
+    if (resStatus === "loading") {
+      setIsLoading(true);
+    } else {
+      setIsLoading(false);
+    }
+  }, [resStatus]);
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+
     dispatch(send({ name, email, message }));
   };
   const { ref, inView } = useInView({
@@ -29,11 +45,25 @@ const Contact = () => {
       dispatch(setSelected("Contact"));
     }
   }, [inView, dispatch]);
+  useEffect(() => {
+    if (resStatus === "succeeded") {
+      setShowNotify(true);
+
+      const timeoutRef = setTimeout(() => {
+        setShowNotify(false);
+      }, 5000);
+
+      return () => clearTimeout(timeoutRef);
+    }
+  }, [resStatus]);
   return (
     <div
       id="contact"
-      className="flex flex-col  md:flex-row justify-center items-center my-24"
+      className="flex flex-col relative md:flex-row justify-center items-center my-24"
     >
+      <AnimatePresence>
+        {showNotify && resMessage && <Notify message={resMessage} />}
+      </AnimatePresence>
       <motion.div
         ref={ref}
         initial={{ x: -100, opacity: 0 }}
@@ -49,7 +79,7 @@ const Contact = () => {
               Your Name
             </label>
             <input
-              className="w-[300px] bg-indigo-900 rounded pl-2 py-1 outline-none"
+              className="w-[300px] text-white bg-indigo-900 focus:bg-indigo-900 rounded pl-2 py-1 outline-none"
               type="text"
               id="name"
               name="name"
@@ -63,7 +93,7 @@ const Contact = () => {
               Your Email
             </label>
             <input
-              className="w-[300px] bg-indigo-900 rounded pl-2 py-1 outline-none"
+              className="w-[300px] text-white bg-indigo-900 focus:bg-indigo-900 rounded pl-2 py-1 outline-none"
               type="email"
               id="email"
               name="email"
@@ -77,7 +107,7 @@ const Contact = () => {
               Your Message
             </label>
             <textarea
-              className="w-[300px] max-h-[150px] min-h-[5rem] bg-indigo-900 rounded pl-2 py-1 outline-none"
+              className="w-[300px] max-h-[150px] min-h-[5rem] text-white bg-indigo-900 focus:bg-indigo-900 rounded pl-2 py-1 outline-none"
               id="message"
               name="message"
               required
@@ -90,7 +120,7 @@ const Contact = () => {
               className="mt-7 w-2/3  whitespace-nowrap rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 font-medium text-white shadow-xl transition-colors hover:scale-105 transition-transform"
               type="submit"
             >
-              Send
+              {isLoading ? <PulseLoader size={10} color="#FFFFFF" /> : "Send"}
             </button>
           </div>
         </form>

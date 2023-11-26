@@ -9,7 +9,7 @@ interface Message {
 interface SendState {
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
-  data: Response | null;
+  data: ServerResponse | null;
 }
 
 const initialState: SendState = {
@@ -17,35 +17,36 @@ const initialState: SendState = {
   error: null,
   data: null,
 };
-
-export const send = createAsyncThunk(
-  "send",
-  async ({ name, email, message }: Message, { rejectWithValue }) => {
-    try {
-      const response = await fetch(
-        "https://portfolio-backend-qbuf.onrender.com/sendEmail",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name, email, message }),
-        }
-      );
-      if (!response.ok) {
-        throw new Error("Failed to send message");
+type ServerResponse = Response & { message?: string };
+export const send = createAsyncThunk<
+  ServerResponse,
+  Message,
+  { rejectValue: string }
+>("send", async ({ name, email, message }: Message, { rejectWithValue }) => {
+  try {
+    const response = await fetch(
+      "https://portfolio-backend-qbuf.onrender.com/sendEmail",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
       }
-      const data = await response.json();
-
-      return data;
-    } catch (error) {
-      if (error instanceof Error) {
-        return rejectWithValue(error.message);
-      }
-      return rejectWithValue("An unknown error occurred");
+    );
+    if (!response.ok) {
+      throw new Error("Failed to send message");
     }
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    if (error instanceof Error) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue("An unknown error occurred");
   }
-);
+});
 
 const sendSlice = createSlice({
   name: "send",
