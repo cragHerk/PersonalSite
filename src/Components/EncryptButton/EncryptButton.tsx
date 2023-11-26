@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { useDispatch } from "react-redux";
-import { setSelected } from "../../State/Reducers/nav.slice";
+import { setSelected, setScrolling } from "../../State/Reducers/nav.slice";
 
 const Example = () => {
   return (
@@ -56,7 +56,12 @@ const EncryptButton = () => {
     setText(TARGET_TEXT);
   };
   const handleClick = () => {
-    dispatch(setSelected("Contact"));
+    dispatch(setScrolling(true));
+
+    setTimeout(() => {
+      dispatch(setScrolling(false));
+      dispatch(setSelected("Contact"));
+    }, 800);
   };
 
   return (
