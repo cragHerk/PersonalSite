@@ -22,6 +22,7 @@ export const send = createAsyncThunk(
   "send",
   async ({ name, email, message }: Message, { rejectWithValue }) => {
     try {
+      console.log("Sending request with data:", { name, email, message }); // Log the data being sent
       const response = await fetch(
         "https://portfolio-backend-qbuf.onrender.com/sendEmail",
         {
@@ -33,8 +34,10 @@ export const send = createAsyncThunk(
         throw new Error("Failed to send message");
       }
       const data = await response.json();
+      console.log("Received response:", data); // Log the received response
       return data;
     } catch (error) {
+      console.error("An error occurred:", error); // Log any errors
       if (error instanceof Error) {
         return rejectWithValue(error.message);
       }
