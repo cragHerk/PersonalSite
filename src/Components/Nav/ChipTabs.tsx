@@ -1,7 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelected, selectSelected } from "../../State/Reducers/nav.slice";
+import {
+  setSelected,
+  selectSelected,
+  setScrolling,
+} from "../../State/Reducers/nav.slice";
 
 const tabs = ["Home", "Portfolio", "About", "Contact"];
 
@@ -13,7 +17,16 @@ const ChipTabs = () => {
     <div className="px-4 py-8 bg-slate-900 flex items-center  flex-wrap gap-2 w-screen z-[20] fixed top-0">
       {tabs.map((tab, index) => (
         <div onClick={() => dispatch(setSelected(tab))} key={index}>
-          <Link to={tab.toLowerCase()} smooth={true}>
+          <Link
+            to={tab.toLowerCase()}
+            smooth={true}
+            onSetActive={() => {
+              dispatch(setScrolling(false));
+            }}
+            onSetInactive={() => {
+              dispatch(setScrolling(false));
+            }}
+          >
             <Chip
               text={tab}
               selected={selected === tab}
@@ -30,10 +43,20 @@ type ChipProps = {
   selected: boolean;
   setSelected: (selected: string) => void;
 };
+
 const Chip = ({ text, selected, setSelected }: ChipProps) => {
+  const dispatch = useDispatch();
   return (
     <button
-      onClick={() => typeof text === "string" && setSelected(text)}
+      onClick={() => {
+        if (typeof text === "string") {
+          setSelected(text);
+          dispatch(setScrolling(true));
+          setTimeout(() => {
+            dispatch(setScrolling(false));
+          }, 1000);
+        }
+      }}
       className={`${
         selected
           ? "text-white"
