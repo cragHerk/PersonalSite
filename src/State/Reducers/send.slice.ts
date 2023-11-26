@@ -9,11 +9,13 @@ interface Message {
 interface SendState {
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
+  data: Response | null;
 }
 
 const initialState: SendState = {
   status: "idle",
   error: null,
+  data: null,
 };
 
 export const send = createAsyncThunk(
@@ -30,6 +32,8 @@ export const send = createAsyncThunk(
       if (!response.ok) {
         throw new Error("Failed to send message");
       }
+      const data = await response.json();
+      return data;
     } catch (error) {
       if (error instanceof Error) {
         return rejectWithValue(error.message);
@@ -48,8 +52,9 @@ const sendSlice = createSlice({
       .addCase(send.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(send.fulfilled, (state) => {
+      .addCase(send.fulfilled, (state, action) => {
         state.status = "succeeded";
+        state.data = action.payload;
       })
       .addCase(send.rejected, (state, action) => {
         state.status = "failed";
