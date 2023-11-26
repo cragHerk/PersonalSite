@@ -59,7 +59,7 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="flex flex-col relative md:flex-row justify-center items-center my-24"
+      className="pt-[40px] flex flex-col relative md:flex-row justify-center items-center my-24"
     >
       <AnimatePresence>
         {showNotify && resMessage && <Notify message={resMessage} />}

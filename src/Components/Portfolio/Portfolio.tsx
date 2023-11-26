@@ -96,7 +96,7 @@ const Portfolio = () => {
   return (
     <div
       id="portfolio"
-      className="mx-auto px-8 py-12 my-[150px]  flex max-w-7xl   flex-col"
+      className="mx-auto px-8 py-12 py-[100px]  flex max-w-7xl   flex-col"
     >
       <div className="md:px-8 mb-8">
         <motion.p

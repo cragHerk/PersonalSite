@@ -26,7 +26,7 @@ export const BouncyCardsFeatures = () => {
   return (
     <section
       id="about"
-      className="mx-auto px-8 py-12 max-w-7xl  text-slate-800"
+      className="mx-auto px-8 pt-[100px] max-w-7xl  text-slate-800"
     >
       <div className="mb-8 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end md:px-8">
         <motion.h2
