@@ -8,7 +8,7 @@ const navSlice = createSlice({
   name: "nav",
   initialState,
   reducers: {
-    setSelected: (state, action: PayloadAction<string>) => {
+    setSelected: (_, action: PayloadAction<string>) => {
       return action.payload;
     },
   },
