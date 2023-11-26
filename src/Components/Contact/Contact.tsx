@@ -79,7 +79,7 @@ const Contact = () => {
               Your Name
             </label>
             <input
-              className="w-[300px] text-white bg-indigo-900 focus:bg-indigo-900 rounded pl-2 py-1 outline-none"
+              className="w-[300px] text-white bg-indigo-900 focus:bg-indigo-900 active:bg-indigo-900 rounded pl-2 py-1 outline-none"
               type="text"
               id="name"
               name="name"
