@@ -24,7 +24,7 @@ export const send = createAsyncThunk(
     try {
       console.log("Sending request with data:", { name, email, message }); // Log the data being sent
       const response = await fetch(
-        "https://portfolio-backend-qbuf.onrender.com:10000/sendEmail",
+        "https://portfolio-backend-qbuf.onrender.com/sendEmail",
         {
           method: "POST",
           body: JSON.stringify({ name, email, message }),
