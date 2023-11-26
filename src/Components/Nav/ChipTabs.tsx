@@ -1,21 +1,23 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { Link } from "react-scroll";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelected, selectSelected } from "../../State/Reducers/nav.slice";
 
 const tabs = ["Home", "Portfolio", "About", "Contact"];
 
 const ChipTabs = () => {
-  const [selected, setSelected] = useState<string>(tabs[0]);
+  const dispatch = useDispatch();
+  const selected = useSelector(selectSelected);
 
   return (
     <div className="px-4 py-8 bg-slate-900 flex items-center  flex-wrap gap-2 w-screen z-[20] fixed top-0">
       {tabs.map((tab, index) => (
-        <div onClick={() => setSelected(tab)} key={index}>
+        <div onClick={() => dispatch(setSelected(tab))} key={index}>
           <Link to={tab.toLowerCase()} smooth={true}>
             <Chip
               text={tab}
               selected={selected === tab}
-              setSelected={setSelected}
+              setSelected={() => dispatch(setSelected(tab))}
             />
           </Link>
         </div>

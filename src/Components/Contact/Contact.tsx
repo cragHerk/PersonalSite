@@ -2,19 +2,23 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { EarthCanvas } from "../canvas";
+import { useDispatch } from "react-redux";
+import { setSelected } from "../../State/Reducers/nav.slice";
 const Contact = () => {
   const { ref, inView } = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1,
   });
 
   const [isVisible, setIsVisible] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (inView) {
       setIsVisible(true);
+      dispatch(setSelected("Contact"));
     }
-  }, [inView]);
+  }, [inView, dispatch]);
   return (
     <div
       id="contact"

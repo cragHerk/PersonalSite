@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
+import { useDispatch } from "react-redux";
+import { setSelected } from "../../State/Reducers/nav.slice";
 
 const Example = () => {
   return (
@@ -17,6 +19,7 @@ const SHUFFLE_TIME = 50;
 const CHARS = "!@#$%^&*():{};|,.<>/?";
 
 const EncryptButton = () => {
+  const dispatch = useDispatch();
   const intervalRef = useRef<number | null>(null);
 
   const [text, setText] = useState(TARGET_TEXT);
@@ -52,6 +55,9 @@ const EncryptButton = () => {
 
     setText(TARGET_TEXT);
   };
+  const handleClick = () => {
+    dispatch(setSelected("Contact"));
+  };
 
   return (
     <motion.button
@@ -61,6 +67,7 @@ const EncryptButton = () => {
       whileTap={{
         scale: 0.975,
       }}
+      onClick={handleClick}
       onMouseEnter={scramble}
       onMouseLeave={stopScramble}
       className="group relative overflow-hidden rounded-lg  bg-slate-900 px-4 py-2 font-mono font-medium uppercase text-slate-300 transition-colors hover:text-indigo-300"

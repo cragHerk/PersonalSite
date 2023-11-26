@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { projects } from "../../utils/projects";
 import { FaSquareGithub } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { setSelected } from "../../State/Reducers/nav.slice";
 interface ProjectCardProps {
   name: string;
   description: string;
@@ -18,18 +20,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   source_code_link,
 }) => {
   const { ref, inView } = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1,
   });
 
   const [isVisible, setIsVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (inView) {
       setIsVisible(true);
+      dispatch(setSelected("Portfolio"));
     }
-  }, [inView]);
+  }, [inView, dispatch]);
   return (
     <motion.div
       ref={ref}

@@ -2,10 +2,13 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import { Link } from "react-scroll";
+import { useDispatch } from "react-redux";
+import { setSelected } from "../../State/Reducers/nav.slice";
 
 export const BouncyCardsFeatures = () => {
+  const dispatch = useDispatch();
   const { ref, inView } = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1,
   });
 
@@ -14,8 +17,12 @@ export const BouncyCardsFeatures = () => {
   useEffect(() => {
     if (inView) {
       setIsVisible(true);
+      dispatch(setSelected("About"));
     }
-  }, [inView]);
+  }, [inView, dispatch]);
+  const handleClick = () => {
+    dispatch(setSelected("Contact"));
+  };
   return (
     <section
       id="about"
@@ -41,7 +48,7 @@ export const BouncyCardsFeatures = () => {
             all in one solution
           </motion.span>
         </motion.h2>
-        <Link to="contact" smooth={true}>
+        <Link to="contact" smooth={true} onClick={handleClick}>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

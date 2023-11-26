@@ -1,16 +1,18 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState, useCallback } from "react";
-
 import { useInView } from "react-intersection-observer";
 import useTypewriter from "react-typewriter-hook";
 import EncryptButton from "../EncryptButton/EncryptButton";
+import { useDispatch } from "react-redux";
+import { setSelected } from "../../State/Reducers/nav.slice";
 type SquareData = {
   id: number;
   src: string;
 };
 const ShuffleHero = () => {
+  const dispatch = useDispatch();
   const { ref, inView } = useInView({
-    triggerOnce: true,
+    triggerOnce: false,
     threshold: 0.1,
   });
 
@@ -19,8 +21,9 @@ const ShuffleHero = () => {
   useEffect(() => {
     if (inView) {
       setIsVisible(true);
+      dispatch(setSelected("Home"));
     }
-  }, [inView]);
+  }, [inView, dispatch]);
   const message = "this easy";
 
   const typewriter = useTypewriter(message);
