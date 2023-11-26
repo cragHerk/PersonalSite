@@ -4,14 +4,24 @@ import { motion } from "framer-motion";
 import { EarthCanvas } from "../canvas";
 import { useDispatch } from "react-redux";
 import { setSelected } from "../../State/Reducers/nav.slice";
+import { send } from "../../State/Reducers/send.slice";
+import { AppDispatch } from "../../State/Store/store";
 const Contact = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    dispatch(send({ name, email, message }));
+  };
   const { ref, inView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
 
   const [isVisible, setIsVisible] = useState(false);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     if (inView) {
@@ -33,7 +43,7 @@ const Contact = () => {
       >
         <p className="text-violet-300 text-xs">Get in touch</p>
         <h2 className="text-white text-4xl font-extrabold mb-5">Contact</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="flex flex-col">
             <label className="text-white py-3 font-bold" htmlFor="name">
               Your Name
@@ -44,6 +54,8 @@ const Contact = () => {
               id="name"
               name="name"
               required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className="flex flex-col">
@@ -56,6 +68,8 @@ const Contact = () => {
               id="email"
               name="email"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="flex flex-col">
@@ -67,6 +81,8 @@ const Contact = () => {
               id="message"
               name="message"
               required
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
             />
           </div>
           <div className="w-full flex justify-center">
