@@ -9,6 +9,8 @@ import { AppDispatch } from "../../State/Store/store";
 import { RootState } from "../../State/Store/store";
 import Notify from "../Notify/Notify";
 import { PulseLoader } from "react-spinners";
+import ParticlesComponent from "../Particles/Particles";
+
 const Contact = () => {
   const [showNotify, setShowNotify] = useState(false);
   const resStatus = useSelector((state: RootState) => state.send.status);
@@ -59,8 +61,9 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="pt-[40px] flex flex-col relative md:flex-row justify-center items-center my-24"
+      className="py-[40px] flex flex-col relative md:flex-row justify-center items-center bg-transparent my-24"
     >
+      <ParticlesComponent />
       <AnimatePresence>
         {showNotify && resMessage && <Notify message={resMessage} />}
       </AnimatePresence>
@@ -69,7 +72,7 @@ const Contact = () => {
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: isVisible ? 0 : -100, opacity: isVisible ? 1 : 0 }}
         transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
-        className="  mt-[80px] px-8 py-12   w-[380px]   bg-slate-900 rounded"
+        className=" flex flex-col justify-center items-center  py-12   w-[380px]   bg-slate-900 rounded"
       >
         <p className="text-violet-300 text-xs">Get in touch</p>
         <h2 className="text-white text-4xl font-extrabold mb-5">Contact</h2>
