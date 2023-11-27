@@ -61,7 +61,7 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="py-[40px] flex flex-col relative md:flex-row justify-center items-center bg-transparent my-24"
+      className="py-[100px] flex flex-col relative md:flex-row justify-center items-center bg-transparent my-24"
     >
       <ParticlesComponent />
       <AnimatePresence>
