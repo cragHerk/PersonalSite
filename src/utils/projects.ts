@@ -4,9 +4,9 @@ export const projects = [
     description:
       "a fullstack project that is designed to handle bicycle reservations at a local bike rental company its functionalities include operations on reservation boards and sending emails",
     tags: [
-      { name: "React", color: "text-blue-500" },
-      { name: "Redux", color: "text-violet-500" },
-      { name: "mongodb", color: "text-green-500" },
+      { name: "React", color: "text-sky-500" },
+      { name: "Redux", color: "text-purple-500" },
+      { name: "mongodb", color: "text-emerald-500" },
       { name: "node.js", color: "text-yellow-500" },
     ],
     image: "/projects/e-bikes.jpg",
@@ -17,9 +17,9 @@ export const projects = [
     description:
       "fullstack project responsible for operations on expenses and income, with the function of setting up an account, created in a group using github and trello and figma ",
     tags: [
-      { name: "React", color: "text-blue-500" },
-      { name: "Redux", color: "text-violet-500" },
-      { name: "mongodb", color: "text-green-500" },
+      { name: "React", color: "text-sky-500" },
+      { name: "Redux", color: "text-purple-500" },
+      { name: "mongodb", color: "text-emerald-500" },
       { name: "node.js", color: "text-yellow-500" },
     ],
     image: "/projects/wallet.jpg",
