@@ -34,19 +34,30 @@ const Contact = () => {
 
     dispatch(send({ name, email, message }));
   };
-  const { ref, inView } = useInView({
+  const { ref: ref1, inView: inView1 } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+  const { ref: ref2, inView: inView2 } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
 
   const [isVisible, setIsVisible] = useState(false);
+  const [isVisibleBall, setIsVisibleBall] = useState(false);
 
   useEffect(() => {
-    if (inView) {
+    if (inView1) {
       setIsVisible(true);
       dispatch(setSelected("Contact"));
     }
-  }, [inView, dispatch]);
+  }, [inView1, dispatch]);
+  useEffect(() => {
+    if (inView2) {
+      setIsVisibleBall(true);
+    }
+  }, [inView2]);
+
   useEffect(() => {
     if (resStatus === "succeeded") {
       setShowNotify(true);
@@ -68,7 +79,7 @@ const Contact = () => {
         {showNotify && resMessage && <Notify message={resMessage} />}
       </AnimatePresence>
       <motion.div
-        ref={ref}
+        ref={ref1}
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: isVisible ? 0 : -100, opacity: isVisible ? 1 : 0 }}
         transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
@@ -129,9 +140,9 @@ const Contact = () => {
         </form>
       </motion.div>
       <motion.div
-        ref={ref}
+        ref={ref2}
         initial={{ x: 100, opacity: 0 }}
-        animate={{ x: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
+        animate={{ x: isVisibleBall ? 0 : 100, opacity: isVisibleBall ? 1 : 0 }}
         transition={{ duration: 0.7, delay: 0.5, ease: "easeInOut" }}
         className="w-[450px] h-[450px] mx-8 my-12 "
       >
