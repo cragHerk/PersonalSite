@@ -1,10 +1,11 @@
-import { motion } from "framer-motion";
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import useTypewriter from "react-typewriter-hook";
-import EncryptButton from "../EncryptButton/EncryptButton";
-import { useDispatch } from "react-redux";
+
 import { setSelected } from "../../State/Reducers/nav.slice";
+import EncryptButton from "../EncryptButton/EncryptButton";
 import { squareData, SquareData } from "../../utils/squareData";
 const ShuffleHero = () => {
   const dispatch = useDispatch();
