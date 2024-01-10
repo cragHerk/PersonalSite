@@ -48,9 +48,9 @@ const ShuffleHero = () => {
         </h3>
 
         <p className="text-base md:text-lg text-slate-300 my-4 md:my-6">
-          Hello, I'm Michał Backi, a web developer. I am driven and ambitious,
-          aspiring to further develop my skills in this field and undertake
-          exciting new projects. Feel free to reach out to me.
+          Hello, I'm Michał Backi, a fullstack developer. I am driven and
+          ambitious, aspiring to further develop my skills in this field and
+          undertake exciting new projects. Feel free to reach out to me.
         </p>
 
         <EncryptButton />
