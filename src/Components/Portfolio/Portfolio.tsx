@@ -40,12 +40,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
-      className=" p-3 relative  bg-gradient-to-b from-indigo-900 to-slate-900 rounded flex justify-center items-center flex-col"
+      className=" p-3 relative  bg-gradient-to-b from-indigo-900 to-slate-900 rounded flex justify-center items-center flex-col md:h-[400px]"
       onMouseEnter={() => setIsModalOpen(true)}
       onMouseLeave={() => setIsModalOpen(false)}
     >
       <img
-        className="rounded md:h-[220px] w-full "
+        className="rounded  md:h-full w-full "
         src={image}
         alt="project_image"
       />
