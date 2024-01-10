@@ -30,10 +30,10 @@ export const projects = [
     description:
       "in progress in progressin progressin progressin progressin progressin progressin progressin progressin progressin progressin progressin progressin progress",
     tags: [
-      { name: "React" },
-      { name: "Redux" },
-      { name: "mongodb" },
-      { name: "node.js" },
+      { name: "React", color: "text-sky-500" },
+      { name: "Redux", color: "text-purple-500" },
+      { name: "mongodb", color: "text-emerald-500" },
+      { name: "node.js", color: "text-yellow-500" },
     ],
     image: "/projects/inprogress.jpg",
     source_code_link: "https://github.com/cragHerk/e-bikes-rental",
