@@ -69,7 +69,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className="flex w-full text-left">
         {tags.map((tag) => (
           <p
-            className={`text-white text-xs mx-1 ${tag.color}`}
+            className={`text-xs mx-1 ${tag.color}`}
             key={`${name}-${tag.name}`}
           >
             #{tag.name}
