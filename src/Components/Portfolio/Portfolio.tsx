@@ -45,7 +45,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       onMouseLeave={() => setIsModalOpen(false)}
     >
       <img
-        className="rounded md:max-h-[220px] w-full "
+        className="rounded md:h-[220px] w-full "
         src={image}
         alt="project_image"
       />
