@@ -56,7 +56,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           transition={{ duration: 0.5 }}
           className="rounded absolute bg-indigo-800 opacity-50 w-full h-full "
         >
-          <a href={source_code_link} className="absolute right-5 top-5">
+          <a
+            href={source_code_link}
+            className="absolute right-5 top-5"
+            title="github link"
+          >
             <FaSquareGithub size={24} />
           </a>
         </motion.div>
