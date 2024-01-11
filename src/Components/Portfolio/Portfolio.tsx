@@ -39,7 +39,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       ref={ref}
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
       className=" p-3 relative  bg-gradient-to-b from-indigo-900 to-slate-900 rounded flex justify-center items-center flex-col md:h-[400px]"
       onMouseEnter={() => setIsModalOpen(true)}
       onMouseLeave={() => setIsModalOpen(false)}
@@ -108,7 +108,7 @@ const Portfolio = () => {
           ref={ref}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeInOut" }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
         >
           My work
         </motion.p>
@@ -117,7 +117,7 @@ const Portfolio = () => {
           ref={ref}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: "easeInOut" }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
         >
           Projects
         </motion.h2>

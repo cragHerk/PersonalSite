@@ -82,7 +82,7 @@ const Contact = () => {
         ref={ref1}
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: isVisible ? 0 : -100, opacity: isVisible ? 1 : 0 }}
-        transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
+        transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
         className=" flex flex-col justify-center items-center  py-12   w-[380px]   bg-slate-900 rounded"
       >
         <p className="text-violet-300 text-xs">Get in touch</p>
@@ -143,7 +143,7 @@ const Contact = () => {
         ref={ref2}
         initial={{ x: 100, opacity: 0 }}
         animate={{ x: isVisibleBall ? 0 : 100, opacity: isVisibleBall ? 1 : 0 }}
-        transition={{ duration: 0.7, delay: 0.5, ease: "easeInOut" }}
+        transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
         className="w-[450px] h-[450px] mx-8 my-12 "
       >
         <EarthCanvas />

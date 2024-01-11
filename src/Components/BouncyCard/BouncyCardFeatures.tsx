@@ -33,7 +33,7 @@ export const BouncyCardsFeatures = () => {
           ref={ref}
           initial={{ x: -100, opacity: 0 }}
           animate={{ x: isVisible ? 0 : -100, opacity: isVisible ? 1 : 0 }}
-          transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
+          transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
           className="max-w-lg text-4xl text-indigo-500 font-bold md:text-5xl"
         >
           Grow faster with our
@@ -41,7 +41,7 @@ export const BouncyCardsFeatures = () => {
             ref={ref}
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
-            transition={{ duration: 0.7, delay: 0.4, ease: "easeInOut" }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeInOut" }}
             className="text-slate-400"
           >
             {" "}
@@ -103,7 +103,7 @@ const BounceCard = ({ className, children }: BounceCardProps) => {
       ref={ref}
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
-      transition={{ duration: 0.7, delay: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
       whileHover={{ scale: 0.95, rotate: "-1deg" }}
       className={`group relative min-h-[300px] cursor-pointer overflow-hidden rounded-2xl bg-slate-100 p-8 ${className}`}
     >
