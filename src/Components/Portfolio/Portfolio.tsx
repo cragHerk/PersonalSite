@@ -40,12 +40,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
-      className=" p-3 relative  bg-gradient-to-b from-indigo-900 to-slate-900 rounded flex justify-center items-center flex-col md:h-[400px]"
+      className=" p-3 relative  bg-gradient-to-b from-indigo-900 to-slate-900 rounded space-y-2 flex flex-col md:h-[400px]"
       onMouseEnter={() => setIsModalOpen(true)}
       onMouseLeave={() => setIsModalOpen(false)}
     >
       <img
-        className="rounded h-[200px]  md:h-full w-full "
+        className="rounded h-[200px]  md:h-[250px] w-full "
         src={image}
         alt="project_image"
       />
@@ -54,7 +54,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 0.5 }}
-          className="rounded absolute bg-indigo-800 opacity-50 w-full h-full "
+          className="rounded absolute bottom-[1px] left-0 bg-indigo-800 opacity-50 w-full h-full "
         >
           <a
             href={source_code_link}
@@ -70,7 +70,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         <h3 className="text-white mt-2 font-bold">{name}</h3>
         <p className="text-slate-300 text-xs mb-2">{description}</p>
       </div>
-      <div className="flex w-full text-left">
+      <div className="flex w-full text-left absolute bottom-2">
         {tags.map((tag) => (
           <p
             className={`text-xs mx-1 ${tag.color}`}

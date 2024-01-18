@@ -26,16 +26,13 @@ export const projects = [
     source_code_link: "https://github.com/cragHerk/WalletApp-frontend",
   },
   {
-    name: "lorem ipsum",
-    description:
-      "in progress in progressin progressin progressin progressin progressin progressin progressin progressin progressin progressin progressin progressin progress",
+    name: "Tutor site",
+    description: "web application for booking tutoring  ",
     tags: [
       { name: "React", color: "text-sky-500" },
-      { name: "Redux", color: "text-purple-500" },
-      { name: "mongodb", color: "text-emerald-500" },
-      { name: "node.js", color: "text-yellow-500" },
+      { name: "next.js", color: "text-white" },
     ],
-    image: "/projects/inprogress.jpg",
-    source_code_link: "https://github.com/cragHerk/e-bikes-rental",
+    image: "/projects/tutorImg.png",
+    source_code_link: "https://twoja-nazwa.netlify.app/",
   },
 ];
