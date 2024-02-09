@@ -48,6 +48,7 @@ const Chip = ({ text, selected, setSelected }: ChipProps) => {
   const dispatch = useDispatch();
   return (
     <button
+      type="button"
       onClick={() => {
         if (typeof text === "string") {
           setSelected(text);
