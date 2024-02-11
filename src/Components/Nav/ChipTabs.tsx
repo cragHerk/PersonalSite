@@ -26,6 +26,7 @@ const ChipTabs = () => {
             onSetInactive={() => {
               dispatch(setScrolling(false));
             }}
+           
           >
             <Chip
               text={tab}
