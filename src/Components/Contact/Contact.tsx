@@ -43,20 +43,11 @@ const Contact = () => {
     threshold: 0.1,
   });
 
-  const [isVisible, setIsVisible] = useState(false);
-  const [isVisibleBall, setIsVisibleBall] = useState(false);
-
   useEffect(() => {
     if (inView1) {
-      setIsVisible(true);
       dispatch(setSelected("Contact"));
     }
   }, [inView1, dispatch]);
-  useEffect(() => {
-    if (inView2) {
-      setIsVisibleBall(true);
-    }
-  }, [inView2]);
 
   useEffect(() => {
     if (resStatus === "succeeded") {
@@ -81,7 +72,7 @@ const Contact = () => {
       <motion.div
         ref={ref1}
         initial={{ x: -100, opacity: 0 }}
-        animate={{ x: isVisible ? 0 : -100, opacity: isVisible ? 1 : 0 }}
+        animate={{ x: inView1 ? 0 : -100, opacity: inView1 ? 1 : 0 }}
         transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
         className=" flex flex-col justify-center items-center  py-12   w-[380px]   bg-slate-900 rounded"
       >
@@ -142,7 +133,7 @@ const Contact = () => {
       <motion.div
         ref={ref2}
         initial={{ x: 100, opacity: 0 }}
-        animate={{ x: isVisibleBall ? 0 : 100, opacity: isVisibleBall ? 1 : 0 }}
+        animate={{ x: inView2 ? 0 : 100, opacity: inView2 ? 1 : 0 }}
         transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
         className="w-[450px] h-[450px] mx-8 my-12 "
       >

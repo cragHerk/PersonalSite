@@ -24,13 +24,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     threshold: 0.1,
   });
 
-  const [isVisible, setIsVisible] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (inView) {
-      setIsVisible(true);
       dispatch(setSelected("Portfolio"));
     }
   }, [inView, dispatch]);
@@ -38,7 +36,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <motion.div
       ref={ref}
       initial={{ y: 100, opacity: 0 }}
-      animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
+      animate={{ y: inView ? 0 : 100, opacity: inView ? 1 : 0 }}
       transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
       className=" p-3 relative  bg-gradient-to-b from-indigo-900 to-slate-900 rounded space-y-2 flex flex-col md:h-[400px] "
       onMouseEnter={() => setIsModalOpen(true)}
@@ -90,13 +88,6 @@ const Portfolio = () => {
     threshold: 0.1,
   });
 
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      setIsVisible(true);
-    }
-  }, [inView]);
   return (
     <div
       id="portfolio"
@@ -107,7 +98,7 @@ const Portfolio = () => {
           className="text-slate-400 text-l ml-[2px]"
           ref={ref}
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
+          animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
         >
           My work
@@ -116,7 +107,7 @@ const Portfolio = () => {
           className="max-w-lg text-4xl text-indigo-500 font-bold md:text-5xl"
           ref={ref}
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
+          animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
         >
           Projects

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-scroll";
 import { useDispatch } from "react-redux";
 import { setSelected } from "../../State/Reducers/nav.slice";
@@ -12,11 +12,8 @@ export const BouncyCardsFeatures = () => {
     threshold: 0.1,
   });
 
-  const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     if (inView) {
-      setIsVisible(true);
       dispatch(setSelected("About"));
     }
   }, [inView, dispatch]);
@@ -32,7 +29,7 @@ export const BouncyCardsFeatures = () => {
         <motion.h2
           ref={ref}
           initial={{ x: -100, opacity: 0 }}
-          animate={{ x: isVisible ? 0 : -100, opacity: isVisible ? 1 : 0 }}
+          animate={{ x: inView ? 0 : -100, opacity: inView ? 1 : 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
           className="max-w-lg text-4xl text-indigo-500 font-bold md:text-5xl"
         >
@@ -40,7 +37,7 @@ export const BouncyCardsFeatures = () => {
           <motion.span
             ref={ref}
             initial={{ y: 100, opacity: 0 }}
-            animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
+            animate={{ y: inView ? 0 : 100, opacity: inView ? 1 : 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeInOut" }}
             className="text-slate-400"
           >
@@ -91,18 +88,11 @@ const BounceCard = ({ className, children }: BounceCardProps) => {
     threshold: 0.1,
   });
 
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      setIsVisible(true);
-    }
-  }, [inView]);
   return (
     <motion.div
       ref={ref}
       initial={{ y: 100, opacity: 0 }}
-      animate={{ y: isVisible ? 0 : 100, opacity: isVisible ? 1 : 0 }}
+      animate={{ y: inView ? 0 : 100, opacity: inView ? 1 : 0 }}
       transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
       whileHover={{ scale: 0.95, rotate: "-1deg" }}
       className={`group relative min-h-[300px] cursor-pointer overflow-hidden rounded-2xl bg-slate-100 p-8 ${className}`}
