@@ -19,7 +19,7 @@ const ShuffleHero = () => {
       dispatch(setSelected("Home"));
     }
   }, [inView, dispatch]);
-  const message = "this easy";
+  const message = "od zera";
 
   const typewriter = useTypewriter(message);
   return (
@@ -29,11 +29,11 @@ const ShuffleHero = () => {
     >
       <div>
         <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
-          Let's connect
+          Siemanko
         </span>
 
         <h3 className="text-4xl md:text-6xl font-semibold text-white">
-          <span>Web Dev was never</span>
+          <span>Strony internetowe</span>
           <motion.span
             className="ml-3"
             ref={ref}
