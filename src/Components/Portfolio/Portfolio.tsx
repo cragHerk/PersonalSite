@@ -101,7 +101,7 @@ const Portfolio = () => {
           animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
         >
-          My work
+          Moje prace
         </motion.p>
         <motion.h2
           className="max-w-lg text-4xl text-indigo-500 font-bold md:text-5xl"
@@ -110,10 +110,10 @@ const Portfolio = () => {
           animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
           transition={{ duration: 0.7, delay: 0.1, ease: "easeInOut" }}
         >
-          Projects
+          Strony
         </motion.h2>
         <p className="text-slate-400 mt-5 ml-[2px] ">
-          Selected portfolio projects
+          Niektóre z moich realizacji
         </p>
       </div>
 

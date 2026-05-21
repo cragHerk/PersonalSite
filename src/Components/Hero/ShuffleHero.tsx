@@ -46,9 +46,9 @@ const ShuffleHero = () => {
         </h3>
 
         <p className="text-base md:text-lg text-slate-300 my-4 md:my-6">
-          Hello, I'm Michał Backi, a fullstack developer. I am driven and
-          ambitious, aspiring to further develop my skills in this field and
-          undertake exciting new projects. Feel free to reach out to me.
+          Mam na imię Michał Backi, sprawię że Twój biznes stanie się widoczny w
+          internecie. stworzę dla Ciebie stronę internetową, wystawię ją do
+          internetu, zadbam o pozycjonowanie oraz bierzący serwis 24/7
         </p>
 
         <EncryptButton />

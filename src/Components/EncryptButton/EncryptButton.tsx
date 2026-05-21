@@ -12,7 +12,7 @@ const Example = () => {
   );
 };
 
-const TARGET_TEXT = "Contact me";
+const TARGET_TEXT = "Kontakt";
 const CYCLES_PER_LETTER = 2;
 const SHUFFLE_TIME = 50;
 
