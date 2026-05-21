@@ -23,7 +23,6 @@ const ChipTabs = () => {
             key={index}
             className="inline-block"
             onClick={(e) => {
-              // Gwarantuje, że i anchor (SEO) i react-scroll (animacja/aktywny stan) działają razem.
               dispatch(setSelected(tab));
               e.preventDefault();
             }}
@@ -74,7 +73,7 @@ const Chip = ({ text, selected, setSelected }: ChipProps) => {
         selected
           ? "text-white"
           : "text-slate-300 hover:text-slate-200 hover:bg-slate-700"
-      } text-sm transition-colors px-2.5 py-0.5 rounded-md relative`}
+      } text-base transition-colors px-2.5 py-0.5 rounded-md relative`}
     >
       <span className="relative z-10">{text}</span>
       {selected && (
