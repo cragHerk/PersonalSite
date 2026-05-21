@@ -28,10 +28,6 @@ const ShuffleHero = () => {
       className="bg-neutral-950 w-full pt-[100px] px-8    grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto"
     >
       <div>
-        <span className="block mb-4 text-xs md:text-sm text-indigo-500 font-medium">
-          Siemanko
-        </span>
-
         <h3 className="text-4xl md:text-6xl font-semibold text-white">
           <span>Strony internetowe</span>
           <motion.span
