@@ -10,13 +10,9 @@ import Contact from "./Components/Contact/Contact";
 import { SuspenseSpinner } from "./Components/SuspenseSpinnner/SuspenseSpinner";
 
 function App() {
-  // Lighthouse na mobile: nie opóźniaj renderowania początkowego.
-  // Loader zostanie wyświetlony tylko w bardzo krótkim momencie (1 klatka),
-  // a właściwa zawartość i tak jest renderowana praktycznie natychmiast.
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // zamiast setTimeout(300) -> usuń opóźnienie
     setIsLoading(false);
   }, []);
 
