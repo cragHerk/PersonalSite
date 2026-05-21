@@ -43,9 +43,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       onMouseLeave={() => setIsModalOpen(false)}
     >
       <img
-        className="rounded h-[200px]  md:h-[250px] w-full "
+        className="rounded w-full h-[200px] md:h-[250px] object-cover"
         src={image}
-        alt="project_image"
+        alt={name ? `${name} preview` : "project_image"}
+        loading="lazy"
+        decoding="async"
       />
       {isModalOpen && (
         <motion.div

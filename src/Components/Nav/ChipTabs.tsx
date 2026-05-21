@@ -15,27 +15,38 @@ const ChipTabs = () => {
 
   return (
     <div className="px-4 py-8 bg-slate-900 flex items-center  flex-wrap gap-2 w-screen z-[20] fixed top-0">
-      {tabs.map((tab, index) => (
-        <div onClick={() => dispatch(setSelected(tab))} key={index}>
-          <Link
-            to={tab.toLowerCase()}
-            smooth={true}
-            onSetActive={() => {
-              dispatch(setScrolling(false));
+      {tabs.map((tab, index) => {
+        const targetId = tab.toLowerCase();
+        return (
+          <a
+            href={`#${targetId}`}
+            key={index}
+            className="inline-block"
+            onClick={(e) => {
+              // Gwarantuje, że i anchor (SEO) i react-scroll (animacja/aktywny stan) działają razem.
+              dispatch(setSelected(tab));
+              e.preventDefault();
             }}
-            onSetInactive={() => {
-              dispatch(setScrolling(false));
-            }}
-           
           >
-            <Chip
-              text={tab}
-              selected={selected === tab}
-              setSelected={() => dispatch(setSelected(tab))}
-            />
-          </Link>
-        </div>
-      ))}
+            <Link
+              to={targetId}
+              smooth={true}
+              onSetActive={() => {
+                dispatch(setScrolling(false));
+              }}
+              onSetInactive={() => {
+                dispatch(setScrolling(false));
+              }}
+            >
+              <Chip
+                text={tab}
+                selected={selected === tab}
+                setSelected={() => dispatch(setSelected(tab))}
+              />
+            </Link>
+          </a>
+        );
+      })}
     </div>
   );
 };

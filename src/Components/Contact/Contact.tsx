@@ -1,9 +1,29 @@
+import { motion } from "framer-motion";
 import { FaFacebookF, FaPhoneAlt } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setSelected } from "../../State/Reducers/nav.slice";
 
 const Contact = () => {
+  const dispatch = useDispatch();
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (inView) dispatch(setSelected("Contact"));
+  }, [inView, dispatch]);
   return (
-    <section
+    <motion.section
+      ref={ref}
       id="contact"
+      animate={{
+        y: inView ? 0 : 60,
+        opacity: inView ? 1 : 0,
+      }}
+      transition={{ duration: 0.7, ease: "easeInOut" }}
       className="py-[100px] flex justify-center items-center bg-transparent my-24"
     >
       <div className="w-full max-w-5xl px-4">
@@ -61,7 +81,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
