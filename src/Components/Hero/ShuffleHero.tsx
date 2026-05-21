@@ -92,14 +92,32 @@ const generateSquares = () => {
 
 const ShuffleGrid = () => {
   const timeoutRef = useRef<number | null>(null);
-  const [squares, setSquares] = useState(generateSquares());
+  const [squares, setSquares] = useState<JSX.Element[]>([]);
+
   const shuffleSquares = useCallback(() => {
     setSquares(generateSquares());
 
-    timeoutRef.current = setTimeout(shuffleSquares, 3000);
+    timeoutRef.current = window.setTimeout(shuffleSquares, 3000);
   }, []);
+
   useEffect(() => {
-    shuffleSquares();
+    // Skracamy krytyczną ścieżkę: nie generuj/nie renderuj ciężkiej siatki
+    // zanim przeglądarka wykona pierwszy paint.
+    const schedule = () => {
+      if ("requestIdleCallback" in window) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (window as any).requestIdleCallback(() => {
+          shuffleSquares();
+        });
+        return;
+      }
+
+      requestAnimationFrame(() => {
+        shuffleSquares();
+      });
+    };
+
+    schedule();
 
     return () => {
       if (timeoutRef.current !== null) {
@@ -110,7 +128,7 @@ const ShuffleGrid = () => {
 
   return (
     <div className="grid grid-cols-4 grid-rows-4 h-[450px] gap-1 [overflow-anchor:none] ">
-      {squares.map((sq) => sq)}
+      {squares}
     </div>
   );
 };
